@@ -1,0 +1,5 @@
+<h1>Peruse all of our products!</h1>
+<% @product.each do |product| %>
+<p>Name: <%= product.name %></p>
+<img src="<%= product.image %>">
+<% end %>
