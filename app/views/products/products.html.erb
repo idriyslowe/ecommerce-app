@@ -1,5 +1,19 @@
 <h1>Peruse all of our products!</h1>
+
+<!-- Add data-toggle="dropdown" -->
+<div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sock Types
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+    <li>Santa</li>
+    <li>Reindeer Snowflake</li>
+    <li>What is this</li>
+  </ul>
+</div>
+
 <% @product.each do |product| %>
-<p>Name: <%= product.name %></p>
+<p class="sock_name"><%= product.name %></p>
 <img src="<%= product.image %>">
 <% end %>
