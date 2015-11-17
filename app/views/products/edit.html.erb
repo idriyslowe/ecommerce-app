@@ -1,0 +1,30 @@
+<h2>Update a product</h2>
+<%= form_tag "/products/#{@product.id}", method: :patch do %>
+  <div class="form-group">
+
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @product.name, class: "form-control", placeholder: "Enter the item name here!" %>
+  </div>
+
+  <div>
+    <%= label_tag :price %>
+    <%= text_field_tag :name, @product.price, class: "form-control", placeholder: "Enter the item name here!" %>
+  </div>
+
+  <div>
+    <%= label_tag :image %>
+    <%= text_field_tag :image, nil, class: "form-control", placeholder: "Copy & Paste new URL here!" %>
+  </div>
+
+  <div>
+    <%= label_tag :description %>
+    <%= text_field_tag :name, @product.description, class: "form-control", placeholder: "Enter the item name here!" %>
+  </div>
+
+  <div>
+    <%= button_tag 'Send' %>
+  </div>
+
+  </div>
+<% end %>
