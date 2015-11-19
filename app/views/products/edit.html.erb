@@ -2,24 +2,24 @@
 <%= form_tag "/products/#{@product.id}", method: :patch do %>
   <div class="form-group">
 
-  <div>
+  <div class="form-group">
     <%= label_tag :name %>
-    <%= text_field_tag :name, @product.name, class: "form-control", placeholder: "Enter the item name here!" %>
+    <%= text_field_tag :name, @product.name, class: "form-control", placeholder: "..." %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= label_tag :price %>
-    <%= text_field_tag :name, @product.price, class: "form-control", placeholder: "Enter the item name here!" %>
+    <%= text_field_tag :price, @product.price, class: "form-control", placeholder: "..." %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= label_tag :image %>
-    <%= text_field_tag :image, nil, class: "form-control", placeholder: "Copy & Paste new URL here!" %>
+    <%= text_field_tag :image, @product.image, class: "form-control", placeholder: "url" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= label_tag :description %>
-    <%= text_field_tag :name, @product.description, class: "form-control", placeholder: "Enter the item name here!" %>
+    <%= text_field_tag :description, @product.description, class: "form-control", placeholder: "..." %>
   </div>
 
   <div>

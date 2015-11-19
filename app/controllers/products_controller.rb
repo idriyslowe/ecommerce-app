@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   end
   def create #@sock variable unneccesary since view doesn't call the variable.
     product = Product.create(name: params[:name], price: params[:price], image: params[:image], description: params[:description])
+    flash[:success] = "You've successfully created a new product!"
     redirect_to "/products"
   end
   def edit
