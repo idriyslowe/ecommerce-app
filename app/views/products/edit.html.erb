@@ -22,6 +22,11 @@
     <%= text_field_tag :description, @product.description, class: "form-control", placeholder: "..." %>
   </div>
 
+   <div class="form-group">
+    <%= label_tag :inventory %>
+    <%= text_field_tag :inventory, @product.inventory, class: "form-control", placeholder: "..." %>
+  </div>
+
   <div>
     <%= button_tag 'Send' %>
   </div>

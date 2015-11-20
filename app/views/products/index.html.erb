@@ -4,16 +4,21 @@
 
 <div class="row">
   <% @product.each do |product| %>
+
     <div class="col-md-3">
       <div class="well">
-        <h2><%= link_to product.name, "/products/#{product.id}" %></h2>
-        <h3><%= product.name %></h3>
-        <p>Created on: <%= product.readable_created_at %></p>
-        <h4><%= product.description %></h4>
-        <p>$<%= product.price %></p>
-        <p>Recipe id: <%= product.id %></p>
+        <h3><%= link_to product.name, "/products/#{product.id}" %></h3>
         <img src="<%= product.image %>" alt="">
+        <p><%= product.description %></p>
+        <h3>$<%= product.price %></h3>
+        <p>Inventory: <%= product.inventory %></p>
+        <p>Product id: <%= product.id %></p>
+        <p>Created on: <%= product.readable_created_at %></p>
       </div>
     </div>
   <% end %>
 </div>
+
+  <!-- <div class="clearfix visible-lg-block">
+      <p>clearfix?</p>
+  </div> -->

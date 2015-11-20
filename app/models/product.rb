@@ -1,17 +1,20 @@
 class Product < ActiveRecord::Base
+  SALES_TAX = 0.09
+  DISCOUNT_THRESHOLD = 10
+
   def readable_created_at
     created_at.strftime("%B %e, %Y")
   end
   def sale_message
-    if price.to_i < 10
+    if price < DISCOUNT_THRESHOLD
       "Discount Item"
     else "On Sale"
     end
   end
   def tax
-    tax = price.to_f * 0.10
+    tax = price * SALES_TAX
   end
   def after_tax_total
-    price.to_f + tax
+    price + tax
   end
 end
