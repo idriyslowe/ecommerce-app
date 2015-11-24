@@ -8,7 +8,9 @@
     <div class="col-md-3">
       <div class="well">
         <h3><%= link_to product.name, "/products/#{product.id}" %></h3>
-        <img src="<%= product.image %>" alt="">
+        <% if product.images.first %>
+         <img src="<%=product.images.first.image%>" alt="">
+        <% end %>
         <p>Supplier: <%= product.supplier.name %></p>
         <p><%= product.description %></p>
         <h3>$<%= product.price %></h3>

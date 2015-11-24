@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   get '/' => 'products#home'
-  get '/santa' => 'products#santa_socks'
-
   get '/products/discount' => 'products#discount'
   get '/products/random' => 'products#random'
   get '/products' => 'products#index'

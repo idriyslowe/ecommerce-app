@@ -4,15 +4,15 @@
 
     <div class="col-md-3">
       <div class="well">
-        <p><%= @product.id %></p>
         <h4><%= @product.sale_message %></h4>
-        <img src="<%= @product.image %>" alt="">
+        <% @product.images.each do |image_object| %>
+         <img src="<%=image_object.image%>" alt="">
+        <% end %>
         <p><%= @product.description %></p>
         <h3>$<%= @product.price %></h3>
-        <p>Tax: $<%= @product.tax %></p>
         <p>Total: $<%= @product.after_tax_total %></p>
         <p>Inventory: <%= @product.inventory %></p>
-        <p>Product id: <%= @product.id %></p>
+        <p>Supplier: <%= @product.supplier.name %></p>
         <p>Created on: <%= @product.readable_created_at %></p>
       </div>
     </div>

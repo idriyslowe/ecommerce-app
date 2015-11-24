@@ -13,13 +13,6 @@ class ProductsController < ApplicationController
       @product = Product.all
     end
   end
-  def santa_socks
-    @product = []
-    socks = Product.all
-    socks.each do |socks|
-      @product << socks if socks.name.include?("Santa")
-    end
-  end
   def show
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
@@ -27,7 +20,7 @@ class ProductsController < ApplicationController
   def new
   end
   def create
-    product = Product.create(name: params[:name], price: params[:price], image: params[:image], description: params[:description])
+    product = Product.create(name: params[:name], price: params[:price], description: params[:description])
     flash[:success] = "You've successfully created a new product!"
     redirect_to "/products"
   end
@@ -36,7 +29,7 @@ class ProductsController < ApplicationController
   end
   def update
     product = Product.find_by(id: params[:id])
-    product.update(name: params[:name], price: params[:price], image: params[:image], description: params[:description], inventory: params[:inventory])
+    product.update(name: params[:name], price: params[:price], description: params[:description], inventory: params[:inventory])
     flash[:success] = "Hey! You updated this product!"
     redirect_to "/products/#{product.id}"
   end
