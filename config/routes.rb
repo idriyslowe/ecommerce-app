@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get '/' => 'products#home'
   get '/products/discount' => 'products#discount'
   get '/products/random' => 'products#random'
@@ -10,6 +11,9 @@ Rails.application.routes.draw do
   patch '/products/:id' => 'products#update'
   delete '/products/:id' => 'products#destroy'
   get '/search' => 'products#search'
+
+  post '/orders' => 'orders#create'
+  get '/orders/:id' => 'orders#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

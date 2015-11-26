@@ -1,4 +1,17 @@
-
+<h2>Please enter quantity and product ID (found in URL)</h2>
+<%= form_tag '/orders', method: :post do %>
+  <div class="form-group">
+    <%= label_tag :quantity %>
+    <%= text_field_tag :quantity, nil, class: "form-control", placeholder: "..." %>
+  </div>
+   <div class="form-group">
+    <%= label_tag :product_id %>
+    <%= text_field_tag :product_id, nil, class: "form-control", placeholder: "..." %>
+  </div>
+   <div>
+    <%= button_tag 'Buy Now!' %>
+  </div>
+<% end %>
 
 <div class="row">
 
