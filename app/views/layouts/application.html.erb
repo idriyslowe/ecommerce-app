@@ -24,8 +24,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/products">All Socks<span class="sr-only">(current)</span></a></li>
+        <% unless current_user %>
         <li><a href="/users/sign_up">Sign Up</a></li>
         <li><a href="/users/sign_in">Sign In</a></li>
+        <% else %>
+        <li><%= link_to "Sign Out", "/users/sign_out", method: :delete %></li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Socks<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -52,11 +56,15 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/products/discount">Discounts</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort/Search<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/products?sort=price&sort_order=asc">Sort by Price: Lowest to Highest</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/products?sort=price&sort_order=desc">Sort by Price: Highest to Lowest</a></li>
+            <li role="separator" class="divider"></li>
+            <% Category.all.each do |category| %>
+              <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>
+            <% end %>
           </ul>
         </li>
       </ul>

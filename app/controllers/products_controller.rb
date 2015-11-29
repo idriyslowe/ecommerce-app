@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
       @product = Product.order(sort_attribute => sort_order)
     elsif search_bar
       @product = Product.where("name LIKE ? OR description LIKE ? OR price LIKE ?", "%#{search_bar}%", "%#{search_bar}%", "%#{search_bar}%")
+    elsif params[:category]
+      @product = Category.find_by(name: params[:category]).products
     else
       @product = Product.all
     end
