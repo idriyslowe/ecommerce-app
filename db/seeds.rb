@@ -1,6 +1,6 @@
 # User.create!([
 #   {email: "idriyswins@gmail.com", encrypted_password: "$2a$10$tPcQU.mTpdCIuhRDw4heX.btHUnKNqW250h34alWU0ThMxALZQcqi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-11-26 00:56:49", last_sign_in_at: "2015-11-26 00:56:49", current_sign_in_ip: "::1", last_sign_in_ip: "::1"}
-])
+# ])
 Image.create!([
   {image: "http://www.saltypeaks.com/pi/p13921-VolcomSocks.jpg", product_id: 1},
   {image: "http://sev.h-cdn.co/assets/cm/15/08/54e814b221e14_-_sev-secret-santa-santa-socks-lgn.png", product_id: 1},
