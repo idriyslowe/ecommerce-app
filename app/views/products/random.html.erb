@@ -4,7 +4,7 @@
       <div class="well">
         <p><%= @product.id %></p>
         <h4><%= @product.sale_message %></h4>
-        <img src="<%= @product.image %>" alt="">
+        <img src="<%= @product.images.first.image %>" alt="">
         <p><%= @product.description %></p>
         <h3>$<%= @product.price %></h3>
         <p>Tax: $<%= @product.tax %></p>

@@ -1,0 +1,16 @@
+<% @carted_products.each do |product| %>
+  <h1><%= product.product.name %></h1>
+
+  <div class="form-group">
+    <%= hidden_field_tag :carted_product_id, product.id, class: "form-control", placeholder: "Don't change that!" %>
+  </div>
+
+  <%= link_to "Remove from cart", "/carted_products/#{product.id}", method: :post%>
+<% end %>
+
+
+<%= form_tag '/orders', method: :post do %>
+  <div>
+    <%= button_tag 'Buy Now!' %>
+  </div>
+<% end %>

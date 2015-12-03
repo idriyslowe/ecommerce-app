@@ -1,5 +1,5 @@
 <h2>Please enter quantity</h2>
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag '/carted_products', method: :post do %>
   <div class="form-group">
     <%= label_tag :quantity %>
     <%= text_field_tag :quantity, nil, class: "form-control", placeholder: "..." %>
@@ -9,7 +9,7 @@
     <%= hidden_field_tag :product_id, @product.id, class: "form-control", placeholder: "Don't change that!" %>
   </div>
    <div>
-    <%= button_tag 'Buy Now!' %>
+    <%= button_tag 'Add To Cart!' %>
   </div>
 <% end %>
 

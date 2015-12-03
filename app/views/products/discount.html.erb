@@ -5,7 +5,7 @@
     <div class="col-md-3">
       <div class="well">
         <h3><%= link_to product.name, "/products/#{product.id}" %></h3>
-        <img src="<%= product.image %>" alt="">
+        <img src="<%= product.images.first.image %>" alt="">
         <p><%= product.description %></p>
         <h3>$<%= product.price %></h3>
         <p>Inventory: <%= product.inventory %></p>
