@@ -13,8 +13,9 @@ class CartedProductsController < ApplicationController
     redirect_to '/' if @carted_products.length == 0
   end
   def destroy
-    carted_products = CartedProduct.where(carted_product_id: params[:carted_product_id]).where(user_id: current_user.id)
-      deleted_product = carted_products.update(status: "removed")
+    carted_product = CartedProduct.find_by(id: params[:id])
+    carted_product.update(status: "removed")
+    flash[:success] = "You have deleted an item."
     redirect_to '/carted_products'
   end
 end
