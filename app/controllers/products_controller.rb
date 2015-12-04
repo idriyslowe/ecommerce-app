@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show, :search] 
+
   def home
   end
   def index
@@ -20,26 +22,45 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: product_id)
   end
   def new
+    unless current_user && current_user.admin
+      redirect_to "/"
+    end
   end
   def create
-    product = Product.create(name: params[:name], price: params[:price], description: params[:description])
-    flash[:success] = "You've successfully created a new product!"
-    redirect_to "/products"
+    if current_user && current_user.admin
+      product = Product.create(name: params[:name], price: params[:price], description: params[:description])
+      flash[:success] = "You've successfully created a new product!"
+      redirect_to "/products"
+    else
+      redirect_to "/"
+    end
   end
   def edit
-    @product = Product.find_by(id: params[:id])
+    if current_user && current_user.admin
+      @product = Product.find_by(id: params[:id])
+    else
+      redirect_to "/"
+    end
   end
   def update
-    product = Product.find_by(id: params[:id])
-    product.update(name: params[:name], price: params[:price], description: params[:description], inventory: params[:inventory])
-    flash[:success] = "Hey! You updated this product!"
-    redirect_to "/products/#{product.id}"
+    if current_user && current_user.admin
+      product = Product.find_by(id: params[:id])
+      product.update(name: params[:name], price: params[:price], description: params[:description], inventory: params[:inventory])
+      flash[:success] = "Hey! You updated this product!"
+      redirect_to "/products/#{product.id}"
+    else
+      redirect_to "/"
+    end
   end
   def destroy
-    product = Product.find_by(id: params[:id])
-    product.destroy
-    flash[:danger] = "Product DESTROYED!"
-    redirect_to '/products'
+    if current_user && current_user.admin
+      product = Product.find_by(id: params[:id])
+      product.destroy
+      flash[:danger] = "Product DESTROYED!"
+      redirect_to '/products'
+    else
+      redirect_to "/"
+    end
   end
   def discount
     @product = Product.where("price < ?", 20)
@@ -50,4 +71,11 @@ class ProductsController < ApplicationController
   # def search
   #   @product = Product.where("name LIKE ? OR description LIKE ? OR price LIKE ?", "%#{search_bar}%", "%#{search_bar}%", "%#{search_bar}%")
   # end
+  private
+
+  def authenticate_admin!
+    unless current_user && current_user.admin
+      redirect_to "/"
+    end
+  end
 end

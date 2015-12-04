@@ -44,9 +44,11 @@
               <li><a href="/products?category=<%= category.name %>"><%= category.name %></a></li>
             <% end %>
             <li role="separator" class="divider"></li>
-            <li><a href="/products/new">Create new sock</a></li>
-            <li role="separator" class="divider"></li>
             <li><a href="/products/random">Random</a></li>
+            <% if current_user && current_user.admin %>
+            <li role="separator" class="divider"></li>
+            <li><a href="/products/new">Create new sock</a></li>
+            <% end %>
           </ul>
         </li>
       </ul>
