@@ -22,24 +22,34 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: product_id)
   end
   def new
+    @product = Product.new
     unless current_user && current_user.admin
       redirect_to "/"
     end
   end
   def create
     if current_user && current_user.admin
-      product = Product.create(name: params[:name], price: params[:price], description: params[:description])
-      flash[:success] = "You've successfully created a new product!"
-      redirect_to "/products"
+      product = Product.new(
+      name: params[:name],
+      price: params[:price],
+      description: params[:description]
+      )
+      if product.save
+        flash[:success] = "You've successfully created a new product!"
+        redirect_to "/products"
+      else
+        #SOME EXCEPTION MESSAGE HERE
+        render :new
+      end
     else
-      redirect_to "/"
+      redirect_to "/products"
     end
   end
   def edit
     if current_user && current_user.admin
       @product = Product.find_by(id: params[:id])
     else
-      redirect_to "/"
+      render :update
     end
   end
   def update
@@ -49,7 +59,7 @@ class ProductsController < ApplicationController
       flash[:success] = "Hey! You updated this product!"
       redirect_to "/products/#{product.id}"
     else
-      redirect_to "/"
+      render :update
     end
   end
   def destroy
@@ -59,7 +69,7 @@ class ProductsController < ApplicationController
       flash[:danger] = "Product DESTROYED!"
       redirect_to '/products'
     else
-      redirect_to "/"
+      redirect_to "/products"
     end
   end
   def discount
@@ -75,7 +85,7 @@ class ProductsController < ApplicationController
 
   def authenticate_admin!
     unless current_user && current_user.admin
-      redirect_to "/"
+      redirect_to "/products"
     end
   end
 end
