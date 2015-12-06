@@ -1,0 +1,6 @@
+<% @supplier.each do |supplier| %>
+<h1><%= supplier.name %></h1>
+<div>
+  <%= link_to "Delete this supplier", "/suppliers/#{supplier.id}", method: :delete %>
+</div>
+<% end %>
