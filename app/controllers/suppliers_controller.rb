@@ -8,7 +8,7 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new
   end
   def create
-    @supplier = Supplier.create(params[:supplier])
+    @supplier = Supplier.create(supplier_params)
     redirect_to "/suppliers/#{@supplier.id}"
   end
   def show
@@ -18,7 +18,7 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find_by(id: params[:id])
   end
   def update
-    @supplier = Supplier.find_by(id: params[:id])
+    @supplier = Supplier.find_by(supplier_params)
     @supplier.update(params[:supplier])
     redirect_to "/suppliers/#{@supplier.id}"
   end
@@ -26,6 +26,9 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find_by(id: params[:id])
     @supplier.update(active: false)
     redirect_to "/suppliers"
+  end
+  def supplier_params
+    params.require(:supplier).permit(:name, :email, :phone)
   end
   private
 

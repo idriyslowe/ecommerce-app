@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   end
   def new
     @product = Product.new
+    @supplier = Supplier.where(active: true)
     unless current_user && current_user.admin
       redirect_to "/"
     end
@@ -32,7 +33,8 @@ class ProductsController < ApplicationController
       product = Product.new(
       name: params[:name],
       price: params[:price],
-      description: params[:description]
+      description: params[:description],
+      supplier_id: params[:supplier][:supplier_id]
       )
       if product.save
         flash[:success] = "You've successfully created a new product!"

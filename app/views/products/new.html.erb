@@ -28,6 +28,9 @@
     <%= label_tag :description %>
     <%= text_field_tag :description, @product.description, class: "form-control", placeholder: "..." %>
   </div>
+
+  <%= collection_select :supplier, :supplier_id, @supplier, :id, :name %>
+
   <div>
     <%= button_tag 'Send' %>
   </div>
