@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get '/' => 'products#home'
+  get '/' => 'products#index'
   get '/products/discount' => 'products#discount'
   get '/products/random' => 'products#random'
   get '/products' => 'products#index'

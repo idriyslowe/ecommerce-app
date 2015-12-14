@@ -1,11 +1,11 @@
-<h2>Please enter quantity</h2>
+<h1>Please enter quantity</h1>
+
 <%= form_tag '/carted_products', method: :post do %>
   <div class="form-group">
-    <%= label_tag :quantity %>
-    <%= text_field_tag :quantity, nil, class: "form-control", placeholder: "..." %>
+    <p><%= label_tag :quantity %></p>
+    <p><%= text_field_tag :quantity, nil, class: "form-control", placeholder: "..." %></p>
   </div>
    <div class="form-group">
-    <%= label_tag :product_id %>
     <%= hidden_field_tag :product_id, @product.id, class: "form-control", placeholder: "Don't change that!" %>
   </div>
    <div>
@@ -13,18 +13,19 @@
   </div>
 <% end %>
 
+
 <div class="row">
 
     <div class="col-md-3">
       <div class="well">
-        <h4><%= @product.sale_message %></h4>
-        <p><%= @product.categories.map { |category| category.name}.join(', ') %></p>
+        <h2><%= @product.sale_message %></h2>
+        <p>Category: <%= @product.categories.map { |category| category.name}.join(', ') %></p>
         <% @product.images.each do |image_object| %>
          <img src="<%=image_object.image%>" alt="">
         <% end %>
         <p><%= @product.description %></p>
         <h3>$<%= @product.price %></h3>
-        <p>Total: $<%= @product.after_tax_total %></p>
+        <h2>Total: $<%= @product.after_tax_total %></h2>
         <p>Inventory: <%= @product.inventory %></p>
         <p>Supplier: <%= @product.supplier.name %></p>
         <p>Created on: <%= @product.readable_created_at %></p>

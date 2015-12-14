@@ -1,9 +1,8 @@
 <% @carted_products.each do |product| %>
-  <h1><%= product.product.name %></h1>
-
+  <h2><%= product.product.name %></h2>
+  <h2>Quantity: <%= product.quantity %></h2>
   <%= link_to "Remove from cart", "/carted_products/#{product.id}", method: :delete %>
 <% end %>
-
 
 <%= form_tag '/orders', method: :post do %>
   <div>

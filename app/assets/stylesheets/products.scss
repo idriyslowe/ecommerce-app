@@ -1,13 +1,6 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-/*body {
-  background: #edf3f0;
-  margin: auto;
-  width: 95%;
-  padding: 10px;
-  text-align: center;
-}*/
 img {
   max-width: 150px;
 }
@@ -18,4 +11,11 @@ p.sock_name {
 
 div.dropdown {
   margin: 10px;
+}
+
+div.alert {
+  color: red;
+}
+div.form-group {
+  color: white;
 }

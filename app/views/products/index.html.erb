@@ -1,6 +1,4 @@
-<h1>Peruse all of our products!</h1>
-
-
+<center><h1>Welcome to Ho Ho Hosiery!</h1></center>
 
 <div class="row">
   <% @product.each do |product| %>
@@ -12,9 +10,6 @@
         <p>Supplier: <%= product.supplier.name %></p>
         <p><%= product.description %></p>
         <h3>$<%= product.price %></h3>
-        <p>Inventory: <%= product.inventory %></p>
-        <p>Product id: <%= product.id %></p>
-        <p>Created on: <%= product.readable_created_at %></p>
       </div>
     </div>
   <% end %>
